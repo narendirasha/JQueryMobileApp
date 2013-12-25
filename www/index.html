@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css">
+	<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+	<script>
+	    $(document).on("pageinit","#pagethree",function(){
+	      $("#tapme").on("tap",function(){
+		$(this).hide();
+	      });
+	      $("h1").on("taphold",function(){
+		$(this).hide();
+	      });
+	      $("swipeme").on("swipe",function(){
+		$("span").text("Swipe detected!");
+	      });
+	      
+	    });
+	    
+	    $(document).on("pageinit",function(event){
+	      $(window).on("orientationchange",function(){
+	        if(window.orientation == 0)
+	        {
+	          $("p").text("The orientation has changed to portrait!").css({"background-color":"yellow","font-size":"300%"});
+	        }
+	        else
+	        {
+	          $("p").text("The orientation has changed to landscape!").css({"background-color":"pink","font-size":"200%"});
+		}
+	      });                   
+	    });
+	    
+	    $(document).on("pageload",function(event,data){
+	      alert("pageload event fired!\nURL: " + data.url);
+	    });
+	    $(document).on("pageloadfailed",function(event,data){
+	      alert("Sorry, requested page does not exist.");
+	    });
+
+    </script>
+    <title>JQuery Mobile app</title>
+ </head>
+    
+    <body>
+	    <div class="app">
+		<h1>PhoneGap</h1>
+		<div id="deviceready" class="blink">
+		    <p class="event listening">Connecting to Device</p>
+		    <p class="event received">Device is Ready</p>
+		</div>
+	    </div>
+	    <div data-role="page" id="pageone">
+	<div data-role="header">
+    <h1>Welcome To My Homepage 1</h1>
+    <div data-role="navbar">
+      <ul>
+        <li><a href="#" data-icon="home">Home</a></li>
+        <li><a href="#pagetwo" data-icon="arrow-r">Page Two</a></li>
+	<li><a href="#pagethree" data-icon="arrow-r">Page three</a></li>
+        <li><a href="#" data-icon="search">Search</a></li>
+      </ul>
+    </div>
+    </div>
+
+  <div data-role="content">
+    <p>Click on the link to see the fade effect.</p>
+    <a href="#pagetwo" data-transition="slide">Fade to Page Two</a>
+    <br>
+    <a href="#pagetwo" data-rel="dialog">open Page 2 dialog</a>
+    <br>
+    <a href="externalfile.html">External page</a>
+    
+    <div data-role="controlgroup" data-type="vertical">
+	<p>Vertical group (default):</p>
+	<a href="#" data-role="button">Button 1</a>
+	<a href="#" data-role="button">Button 2</a>
+	<a href="#" data-role="button">Button 3</a>
+    </div>
+    
+    <p>Two-column Layout:</p>
+   <div class="ui-grid-a">
+     <div class="ui-block-a"><a href="#" data-role="button">First Column Button</a><br>
+       <span>First Column: This is some text. This is some text. This is some text. This is some text. This is some text.</span>
+     </div>
+     <div class="ui-block-b">
+       <a href="#" data-role="button">Second Column Button</a><br>
+       <span>Second Column: This is some text. This is some text. This is some text. This is some text.</span>
+     </div>
+   </div>
+  
+  </div>
+  
+  <div data-role="content">
+    <form method="post" action="demoform.asp">
+       <div data-role="fieldcontain">
+        <label for="info">Additional Information:</label>
+        <textarea name="addinfo" id="info"></textarea>
+      </div>
+      <fieldset data-role="controlgroup" data-type="horizontal">
+	<legend>Choose your gender:</legend>
+        <label for="male">Male</label>
+        <input type="radio" name="gender" id="male" value="male">
+        <label for="female">Female</label>
+        <input type="radio" name="gender" id="female" value="female">	
+      </fieldset>
+
+      <fieldset data-role="controlgroup" data-type="horizontal">
+        <legend>Choose as many favorite colors as you'd like:</legend>
+          <label for="red">Red</label>
+          <input type="checkbox" name="favcolor" id="red" value="red">
+          <label for="green">Green</label>
+          <input type="checkbox" name="favcolor" id="green" value="green">
+          <label for="blue">Blue</label>
+          <input type="checkbox" name="favcolor" id="blue" value="blue">	
+      </fieldset>
+      <input type="submit" data-inline="true" value="Submit">
+    </form> 
+    
+  </div>
+</div>
+  
+
+  <div data-role="footer" >
+    <h1>Footer Text 1</h1>
+  </div>
+</div> 
+
+<!--  page 2 -------------->
+
+<div data-role="page" id="pagetwo" data-overlay-theme="e">
+  <div data-role="header" data-position="fixed" data-theme="e">
+    <h1>Welcome To My Homepage 2</h1>
+    <a href="#" data-role="button" class="ui-btn-right" data-icon="search">Search</a>
+    <a href="#" data-role="button" class="ui-btn-left" data-rel="back" data-icon="back">Go Back</a>
+  </div>
+
+  <div data-role="content">
+    <p>Click on the link to go back. <b>Note</b>: fade is default.</p>
+    <a href="#pageone" data-transition="slide" data-direction="reverse">Go back to Page One</a>
+    <br><br>
+    <form method="post" action="demoform.asp">
+      <fieldset data-role="collapsible">
+        <legend>Click me - I'm collapsible!</legend>
+          <label for="name">Full Name:</label>
+          <input type="text" name="text" id="name">
+          <p>Favorite Color:</p>
+        <div data-role="controlgroup">
+          <label for="red">Red</label>
+          <input type="checkbox" name="favcolor" id="red" value="red">
+          <label for="green">Green</label>
+          <input type="checkbox" name="favcolor" id="green" value="green">
+          <label for="blue">Blue</label>
+          <input type="checkbox" name="favcolor" id="blue" value="blue">
+        </div>	
+      <input type="submit" data-inline="true" value="Submit">
+      </fieldset>
+    </form>
+    
+  </div>
+
+  <div data-role="content">
+	<h2>My Phonebook</h2>
+	<ul data-role="listview" data-autodividers="true" data-inset="true" data-filter="true">
+	  <li><a href="#">Adele</a></li>
+	  <li><a href="#">Agnes</a></li>
+	  <li><a href="#">Albert</a></li>
+	  <li><a href="#">Billy</a></li>
+	  <li><a href="#">Bob</a></li>
+	  <li><a href="#">Calvin</a></li>
+	  <li><a href="#">Cameron</a></li>
+	  <li><a href="#">Chloe</a></li>
+	  <li><a href="#">Christina</a></li>
+	  <li><a href="#">Diana</a></li>
+	  <li><a href="#">Gabriel</a></li>
+	  <li><a href="#">Glen</a></li>
+	  <li><a href="#">Ralph</a></li>
+	  <li><a href="#">Valarie</a></li>
+	</ul>
+	<p>The data-autodividers="true" attribute creates dividers where it is appropriate with uppercased first letters of the item's text.</p>
+	
+	
+	<form method="post" action="demoform.asp">
+	  <fieldset data-role="fieldcontain">
+            <label for="day">Select Day</label>
+            <select name="day" id="day" data-native-menu="false">
+	      <optgroup label="Weekdays">
+                <option value="mon">Monday</option>
+                <option value="tue">Tuesday</option>
+                <option value="wed">Wednesday</option>
+                <option value="thu">Thursday</option>
+		<option value="fri">Friday</option>
+	      </optgroup>
+	      <optgroup label="Weekends">
+		<option value="sat">Saturday</option>
+		<option value="sun">Sunday</option>
+	      </optgroup>
+            </select>
+	  </fieldset>
+	  <div data-role="rangeslider">
+		<label for="price-min">Price:</label>
+		<input type="range" name="price-min" id="price-min" value="200" min="0" max="1000">
+		<label for="price-max">Price:</label>
+		<input type="range" name="price-max" id="price-max" value="800" min="0" max="1000">
+	</div>
+	  <input type="submit" data-inline="true" value="Submit">
+	</form>
+	 
+	 
+  </div>
+  
+  
+  <div data-role="footer" data-position="fixed">
+    <h1>Footer Text 2</h1>
+  </div>
+</div>
+
+<!--  page 3 -->
+<div data-role="page" id="pagethree">
+  <div data-role="header">
+    <h1>Welcome To My Page 3 </h1>
+    <a href="#" data-role="button" class="ui-btn-left" data-rel="back" data-icon="back">Go Back</a>
+  </div>
+
+  <div data-role="content">
+	<h1>Tap and hold for a second.</h1>
+        <p id="tapme">If you tap me, I will disappear.....ssshhhhh</p>
+	<p id="swipeme" style="border:1px solid blue;height:200px;width:200px;"></p>
+  </div>
+
+  <div data-role="footer">
+    <h1>Footer Text 3</h1>
+  </div>
+</div> 
+
+
+        <script type="text/javascript" src="phonegap.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript">
+            app.initialize();
+        </script>
+    </body>
+</html>
